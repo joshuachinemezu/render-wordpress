@@ -4,7 +4,7 @@ FROM wordpress:6.2.2-apache
 
 RUN apt-get update && apt-get install -y magic-wormhole nano sudo
 
-RUN useradd -m www-data && echo "www-data:www-data" | chpasswd && adduser www-data sudo
+RUN echo "www-data:www-data" | chpasswd && adduser www-data sudo
 
 RUN usermod -s /bin/bash www-data
 RUN chown www-data:www-data /var/www
