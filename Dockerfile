@@ -1,10 +1,10 @@
-# You can change this to a different version of Wordpress available at
-# https://hub.docker.com/_/wordpress
-FROM wordpress:6.2.2-apache
+FROM wordpress:latest
 
-RUN apt-get update && apt-get install -y magic-wormhole nano sudo
+RUN apt-get update \
+    && apt-get install -y sudo nano \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN echo "www-data:www-data" | chpasswd && adduser www-data sudo
+RUN echo "www-data ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN usermod -s /bin/bash www-data
 RUN chown www-data:www-data /var/www
