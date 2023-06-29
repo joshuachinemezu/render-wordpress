@@ -1,4 +1,4 @@
-FROM wordpress:latest
+FROM wordpress:6.2.2-apache
 
 COPY ./uploads.ini /usr/local/etc/php/conf.d
 
